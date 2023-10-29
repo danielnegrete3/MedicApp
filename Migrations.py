@@ -1,6 +1,7 @@
 import sqlite3
 
 usuarios =  [ 
+    "id INTEGER PRIMARY KEY ASC",
     "nombre",
     "nombre_usuario",
     "fecha_nacimiento",
@@ -9,16 +10,19 @@ usuarios =  [
     "imagen"
 ]
 administrativos = [
+    "id INTEGER PRIMARY KEY ASC",
     "id_usuario",
     "cargo"
 ]
 doctores =[
+    "id INTEGER PRIMARY KEY ASC",
     "id_usuario",
     "cedula",
     "especialidad",
     "experiencia"
 ]
 diagnosticos =[
+    "id INTEGER PRIMARY KEY ASC",
     "id_doctor",
     "nombre_pasiente",
     "fecha_nacimiento",
@@ -29,22 +33,26 @@ diagnosticos =[
     "enfermedad",
 ]
 enfermedades = [
+    "id INTEGER PRIMARY KEY ASC",
     "nombre",
     "signos",
     "sintomas",
     "examenes",
 ]
 signos_sintomas= [
+    "id INTEGER PRIMARY KEY ASC",
     "nombre",
     "tipo", #signo o sintoma
     "descripcion", 
 ]
 examenes = [
+    "id INTEGER PRIMARY KEY ASC",
      "nombre",
      "tipo", #rango, boleano, cualquier otro
      "valor" #valor positivo o rango positivo
 ]
 examenes_diagnosticos =[
+    "id INTEGER PRIMARY KEY ASC",
     "id_examen",
     "id_diagnostico",
     "valor_diagnostico"
