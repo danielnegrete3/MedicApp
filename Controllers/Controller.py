@@ -24,15 +24,18 @@ class Controller:
         )
         self.conexion.commit() 
         
-    def where(self, column, value):
+    def where(self, columns, values):
+        search = ""
+        for i in range(len(columns)):
+            search += " " + columns[i] + " = '" + values[i] + "'"
+            if(len(columns)-1 != i):
+                search += " AND"              
         return self.conexion.execute(
             "SELECT *"+
             " FROM " +
-            self.table+
-            "WHERE "+
-            column +
-            " = '"+
-            value +"'"
+            self.table +
+            " WHERE "+
+            search
         )
         
     def where_id(self, id):

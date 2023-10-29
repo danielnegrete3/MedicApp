@@ -1,7 +1,9 @@
 from tkinter import *
 from Screen import Screen
+from Controllers.usuarioController import usuarioController
 
 class Login(Screen):
+    controller = usuarioController()
     def init (self):
         self.Titulo = Label(self.window,
                             text="MedicApp",
@@ -39,6 +41,7 @@ class Login(Screen):
                                 justify=CENTER,
                                 font="Arial 20 bold",
                                 # state="disabled"
+                                command=self.Iniciar
                                 )
         
         # mpaquetar los elementos
@@ -49,3 +52,9 @@ class Login(Screen):
         self.CheckShow.grid(row=3,column=4)
         self.Registrar.grid(row=4,column=3)
         self.Iniciar.grid(row=5,column=3)
+        
+    def Iniciar(self):
+        print(self.controller.where(
+            ['nombre_usuario', 'contrasena'],
+            [self.NUsuario.get(), self.CUsuario.get()]
+            ).fetchone())#si te sale None es que no existe ese usuario
